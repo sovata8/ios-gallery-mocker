@@ -54,7 +54,9 @@ final class VideosDownloadManager: ObservableObject {
 
     func deleteDownloads() {
         SampleVideoType.allCases.forEach { videoType in
-            try! FileManager.default.removeItem(at: videoType.localURL)
+            if FileManager.default.fileExists(atPath: videoType.localURL.path) {
+                try! FileManager.default.removeItem(at: videoType.localURL)
+            }
             status[videoType] = .notDownloaded
         }
         self.objectWillChange.send()
