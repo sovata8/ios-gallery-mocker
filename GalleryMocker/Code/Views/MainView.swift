@@ -9,66 +9,22 @@ import SwiftUI
 import Photos
 
 
-enum SampleImageType: String, CaseIterable, Identifiable {
-    var id: Self { self }
-
-    case mountains
-    case deers
-    case forest
-    case trees
-
-    var isLarge: Bool {
-        switch self {
-        case .mountains, .deers: false
-        case .forest, .trees: true
-        }
-    }
-}
-
-
-enum SampleVideoType: String, CaseIterable, Identifiable {
-    var id: Self { self }
-
-    case london
-    case new_york
-
-    var webURL: URL {
-        switch self {
-        case .london:
-            URL(string: "https://videos.pexels.com/video-files/13986779/13986779-uhd_2160_3840_60fps.mp4")!
-        case .new_york:
-            URL(string: "https://videos.pexels.com/video-files/5796436/5796436-uhd_3840_2160_30fps.mp4")!
-        }
-    }
-
-    var sizeMB: Int {
-        switch self {
-        case .london: 97
-        case .new_york: 193
-        }
-    }
-
-    var localURL: URL {
-        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        return documentsURL.appendingPathComponent(webURL.lastPathComponent)
-    }
-}
-
 struct MainView: View {
-    @State var text: String = ""
-    @State var imageType: SampleImageType = .mountains
-    @State var videoType: SampleVideoType = .london
-    @State var howManyImages: Int = 1
-    @State var addText = false
-    @State var addTint = false
-    @State var isBusy = false
-    @State var isDeleteInfoSheetPresented = false
+    @State private var text: String = ""
+    @State private var imageType: SampleImageType = .mountains
+    @State private var videoType: SampleVideoType = .london
+    @State private var howManyImages: Int = 1
+    @State private var addText = false
+    @State private var addTint = false
+    @State private var isBusy = false
+    @State private var isDeleteInfoSheetPresented = false
+    @State private var isAppVersionShown = false
 
-    @StateObject var videosDownloadManager = VideosDownloadManager.sharedInstance
+    @StateObject private var videosDownloadManager = VideosDownloadManager.sharedInstance
 
-    @State var isCreationDateOverriden: Bool = false
-    @State var creationDateOverride: Date = .now
-    var creationDateToUse: Date? {
+    @State private var isCreationDateOverriden: Bool = false
+    @State private var creationDateOverride: Date = .now
+    private var creationDateToUse: Date? {
         isCreationDateOverriden ? creationDateOverride : nil
     }
 
@@ -97,6 +53,15 @@ struct MainView: View {
                 UIApplication.shared.open(URL(string:"photos-redirect://")!)
             }
             .font(.footnote)
+            .onLongPressGesture {
+                isAppVersionShown.toggle()
+            }
+
+            if isAppVersionShown {
+                Text("Version \(Bundle.main.appVersionLong) (\(Bundle.main.appBuild)) ")
+                    .font(.footnote)
+                    .monospaced()
+            }
 
             Divider()
 
@@ -363,21 +328,7 @@ struct MainView: View {
                     }
                     .font(.footnote)
                 }
-
-
             }
-
-//            VStack(spacing: 0) {
-//                Toggle(isOn: $useAlternativeDeletionMethod) {
-//                    Label("Use alternative method", systemImage: useAlternativeDeletionMethod ? "checkmark.circle" : "x.circle")
-//                }
-//                .toggleStyle(.button)
-//                .font(.footnote)
-//
-//                Text("Uses a specially saved geographical location tag")
-//                    .font(.footnote)
-//                    .opacity(0.25)
-//            }
         }
         .padding()
     }
