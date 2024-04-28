@@ -1,5 +1,5 @@
 //
-//  ActivityIndicator.swift
+//  UIImage+Text.swift
 //  GalleryMocker
 //
 //  Created by Nikolay Suvandzhiev on 20/04/2024.

@@ -1,5 +1,5 @@
 //
-//  ActivityIndicator.swift
+//  GalleryManager.swift
 //  GalleryMocker
 //
 //  Created by Nikolay Suvandzhiev on 20/04/2024.
@@ -9,7 +9,7 @@ import UIKit
 import Photos
 
 
-enum Manager {
+enum GalleryManager {
     private static var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd_HH:mm:ss_SSS"

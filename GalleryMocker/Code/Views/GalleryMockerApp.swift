@@ -1,5 +1,5 @@
 //
-//  ActivityIndicator.swift
+//  GalleryMockerApp.swift
 //  GalleryMocker
 //
 //  Created by Nikolay Suvandzhiev on 20/04/2024.
@@ -12,7 +12,7 @@ import SwiftUI
 struct GalleryMockerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
                 .preferredColorScheme(.dark)
         }
     }

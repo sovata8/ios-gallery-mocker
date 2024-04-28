@@ -1,5 +1,5 @@
 //
-//  ActivityIndicator.swift
+//  MainView.swift
 //  GalleryMocker
 //
 //  Created by Nikolay Suvandzhiev on 20/04/2024.
@@ -54,7 +54,7 @@ enum SampleVideoType: String, CaseIterable, Identifiable {
     }
 }
 
-struct ContentView: View {
+struct MainView: View {
     @State var text: String = ""
     @State var imageType: SampleImageType = .mountains
     @State var videoType: SampleVideoType = .london
@@ -127,7 +127,7 @@ struct ContentView: View {
                 if !ProcessInfo.isOnPreview() {
                     for _ in 0..<howManyImages {
                         Task {
-                            try await Manager.writeToGallery(
+                            try await GalleryManager.writeToGallery(
                                 imageURL: url,
                                 addText: addText,
                                 addRandomTint: addTint, 
@@ -217,7 +217,7 @@ struct ContentView: View {
                     if statusForCurrentVideoType().isDownloaded {
                         if !ProcessInfo.isOnPreview() {
                             Task {
-                                try await Manager.writeToGallery(
+                                try await GalleryManager.writeToGallery(
                                     videoURL: videoType.localURL,
                                     creationDate: creationDateToUse
                                 )
@@ -310,9 +310,9 @@ struct ContentView: View {
                     if !ProcessInfo.isOnPreview() {
                         Task {
                             if useAlternativeDeletionMethod {
-                                try await Manager.deleteAllFromGallerySecondaApproach()
+                                try await GalleryManager.deleteAllFromGallerySecondaApproach()
                             } else {
-                                try await Manager.deleteAllFromGallery()
+                                try await GalleryManager.deleteAllFromGallery()
                             }
                             log("Deleted from gallery")
                         }
@@ -370,6 +370,6 @@ struct ContentView: View {
 
 
 #Preview {
-    ContentView()
+    MainView()
         .preferredColorScheme(.dark)
 }
