@@ -56,7 +56,6 @@ enum GalleryManager {
     }
 
 
-
     // PRIVATE:
     private static func writeToGalleryMedia(url: URL, type: PHAssetResourceType, creationDate: Date?) async throws {
         let dateText = dateFormatter.string(from: .now)
@@ -136,12 +135,17 @@ enum GalleryManager {
 
 
     private static func deleteAllFromGallery(ids: [String]) async throws {
+        if PHPhotoLibrary.authorizationStatus(for: .readWrite) != .authorized {
+            Log.main.warning("You have not allowed access to Photos, so this app can't delete the items. You can change this in Setting and choose 'Full access'.")
+        }
         let localIDsToDelete = ids
         let assets = PHAsset.fetchAssets(withLocalIdentifiers: localIDsToDelete, options: nil)
-        try PHPhotoLibrary.shared().performChangesAndWait {
-            PHAssetChangeRequest.deleteAssets(assets)
+        if assets.count > 0 {
+            try PHPhotoLibrary.shared().performChangesAndWait {
+                PHAssetChangeRequest.deleteAssets(assets)
+            }
+            localIDs = []
         }
-        localIDs = []
     }
 
 
