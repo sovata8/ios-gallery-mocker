@@ -25,6 +25,8 @@
 		B654068D2BD121EC0041A3F3 /* mountains.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B654068B2BD121EC0041A3F3 /* mountains.jpg */; };
 		B654068E2BD121EC0041A3F3 /* deers.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B654068C2BD121EC0041A3F3 /* deers.jpg */; };
 		B65406902BD131010041A3F3 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B654068F2BD131010041A3F3 /* Logger.swift */; };
+		B67729C72BDED38D000E18EC /* SwiftUIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67729C62BDED38D000E18EC /* SwiftUIHelpers.swift */; };
+		B67729C92BDEE2EB000E18EC /* CircularButtonWithProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67729C82BDEE2EB000E18EC /* CircularButtonWithProgress.swift */; };
 		B6E6B8922BDE7880004D2E2B /* SampleMediaTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E6B8912BDE7880004D2E2B /* SampleMediaTypes.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +52,8 @@
 		B654068B2BD121EC0041A3F3 /* mountains.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mountains.jpg; sourceTree = "<group>"; };
 		B654068C2BD121EC0041A3F3 /* deers.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = deers.jpg; sourceTree = "<group>"; };
 		B654068F2BD131010041A3F3 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		B67729C62BDED38D000E18EC /* SwiftUIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIHelpers.swift; sourceTree = "<group>"; };
+		B67729C82BDEE2EB000E18EC /* CircularButtonWithProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularButtonWithProgress.swift; sourceTree = "<group>"; };
 		B6E6B8912BDE7880004D2E2B /* SampleMediaTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleMediaTypes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +133,7 @@
 				B65406532BD029230041A3F3 /* GalleryMockerApp.swift */,
 				B65406552BD029230041A3F3 /* MainView.swift */,
 				B60765F52BD630A500FE4D6E /* ActivityIndicator.swift */,
+				B67729C82BDEE2EB000E18EC /* CircularButtonWithProgress.swift */,
 				B606801F2BD8E52000C6C0B6 /* CircularProgressView.swift */,
 			);
 			path = Views;
@@ -143,6 +148,7 @@
 				B65406822BD11E1E0041A3F3 /* UIImage+RandomTint.swift */,
 				B654067E2BD116780041A3F3 /* Utils.swift */,
 				B654068F2BD131010041A3F3 /* Logger.swift */,
+				B67729C62BDED38D000E18EC /* SwiftUIHelpers.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -247,8 +253,10 @@
 				B65406542BD029230041A3F3 /* GalleryMockerApp.swift in Sources */,
 				B65406902BD131010041A3F3 /* Logger.swift in Sources */,
 				B654067B2BD1109C0041A3F3 /* UserDefaultsPropertyWrapper.swift in Sources */,
+				B67729C92BDEE2EB000E18EC /* CircularButtonWithProgress.swift in Sources */,
 				B60765F62BD630A500FE4D6E /* ActivityIndicator.swift in Sources */,
 				B60680202BD8E52000C6C0B6 /* CircularProgressView.swift in Sources */,
+				B67729C72BDED38D000E18EC /* SwiftUIHelpers.swift in Sources */,
 				B6E6B8922BDE7880004D2E2B /* SampleMediaTypes.swift in Sources */,
 				B654067F2BD116780041A3F3 /* Utils.swift in Sources */,
 			);

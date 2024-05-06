@@ -221,20 +221,18 @@ struct MainView: View {
                         .opacity(0.5)
                         .transition(.opacity.animation(.default))
 
-                    ZStack {
-                        CircularProgressView(progress: statusForCurrentVideoType().progress ?? 0)
-                            .frame(width: 20, height: 20)
-                            .opacity(statusForCurrentVideoType().isInProgress ? 1 : 0)
-
-                        Button {
-                            if statusForCurrentVideoType().isInProgress {
-                                videosDownloadManager.cancel()
-                            } else {
-                                videosDownloadManager.status[videoType] = .inProgress(progress: 0)
-                                videosDownloadManager.downloadVideo(videoType)
-                            }
-                        } label: {
-                            Image(systemName: statusForCurrentVideoType().isInProgress ? "xmark.circle.fill" : "arrowshape.down.circle")
+                    CircularButtonWithProgress(
+                        image: Image(
+                            systemName: statusForCurrentVideoType().isInProgress ? "xmark.circle.fill" : "arrowshape.down.circle"
+                        ),
+                        isProgressShown: statusForCurrentVideoType().isInProgress,
+                        progress: statusForCurrentVideoType().progress ?? 0
+                    ) {
+                        if statusForCurrentVideoType().isInProgress {
+                            videosDownloadManager.cancel()
+                        } else {
+                            videosDownloadManager.status[videoType] = .inProgress(progress: 0)
+                            videosDownloadManager.downloadVideo(videoType)
                         }
                     }
                     .fixedSize()

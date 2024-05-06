@@ -69,6 +69,7 @@ var dateFormatter: DateFormatter = {
     return formatter
 }()
 
+
 extension Bundle {
     public var appBuild: String          { getInfo("CFBundleVersion") }
     public var appVersionLong: String    { getInfo("CFBundleShortVersionString") }
